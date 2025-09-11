@@ -1,6 +1,5 @@
 {
   "name": "cucumber-test",
-  "type": "module",
   "devDependencies": {
     "@wdio/cli": "^9.19.2",
     "@wdio/cucumber-framework": "^9.19.2",
