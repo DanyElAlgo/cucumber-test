@@ -21,7 +21,7 @@ module.exports.config = {
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        require: ['./features/step-definitions/**/*.js'], //For some reason, using *s gives errors
+        require: ['./features/step-definitions/**/*.js'], 
         backtrace: false,
         requireModule: [],
         dryRun: false,
