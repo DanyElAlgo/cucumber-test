@@ -10,14 +10,24 @@ module.exports.config = {
     maxInstances: 10,
     capabilities: [{
         browserName: 'chrome'
-    }],
+    },{
+        browserName: 'edge'
+    }
+    ],
     logLevel: 'info',
     bail: 0,
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     framework: 'cucumber',
-    reporters: ['spec'],
+    reporters: [
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+            useCucumberStepReporter: true
+        }]
+    ],
 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -137,8 +147,11 @@ module.exports.config = {
      * @param {number}                 result.duration  duration of scenario in milliseconds
      * @param {object}                 context          Cucumber World object
      */
-    // afterScenario: function (world, result, context) {
-    // },
+    afterScenario: async function (world, result) {
+    if (result.passed === false) {
+        await browser.takeScreenshot();
+    }
+    },
     /**
      *
      * Runs after a Cucumber Feature.

@@ -1,8 +1,8 @@
-Feature: The Internet Guinea Pig Website
+Feature: Login test
 
   Scenario Outline: As a user, I can log into the secure area
 
-    Given I log in
+    Given I log into the page
     When I login with <username> and <password>
     Then I should see a flash message saying <message>
 

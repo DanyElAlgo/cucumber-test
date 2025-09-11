@@ -1,4 +1,4 @@
-Feature:
+Feature: Scroll test
 
 Scenario: As a user, I can infinitely scroll the page.
     
