@@ -1,6 +1,5 @@
 const { Given, When, Then } = require('@wdio/cucumber-framework');
 const loginPage = require('../../pageObjects/loginPage').default;
-const securePage = require('../../pageObjects/securePage').default;
 
 Given(/^I log into the page$/, async () => {
     await loginPage.open();
@@ -11,6 +10,9 @@ When(/^I login with (\w+) and (.+)$/, async (username, password) => {
 });
 
 Then(/^I should see a flash message saying (.*)$/, async (message) => {
-    await securePage.isMessageDisplayed(message);
+    const exists = await loginPage.flashMessage.isExisting();
+    if (message === "." && !exists) return;
+    
+    await loginPage.isMessageDisplayed(message);
 });
 

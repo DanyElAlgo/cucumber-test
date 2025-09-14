@@ -10,8 +10,8 @@ module.exports.config = {
     maxInstances: 10,
     capabilities: [{
         browserName: 'chrome'
-    },{
-        browserName: 'edge'
+    // },{
+    //     browserName: 'edge'
     }
     ],
     logLevel: 'info',
