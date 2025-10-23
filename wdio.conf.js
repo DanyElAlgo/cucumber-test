@@ -8,11 +8,15 @@ module.exports.config = {
         // 'path/to/excluded/files'
     ],
     maxInstances: 10,
-    capabilities: [{
-        browserName: 'chrome'
-    // },{
-    //     browserName: 'edge'
-    }
+ capabilities: [
+        {
+         browserName: 'chrome',
+        'goog:chromeOptions': {
+            args: [
+                '--headless', '--no-sandbox', '--disable-dev-shm-usage'
+                ]
+            },
+        }
     ],
     logLevel: 'info',
     bail: 0,
@@ -89,8 +93,8 @@ module.exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: async function (capabilities, specs) {
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
